@@ -11,5 +11,14 @@
   <welcome-file-list>
     <welcome-file>MarcsEisdiele.html</welcome-file>
   </welcome-file-list>
+  <servlet>
+		<servlet-name>UnternehmensService</servlet-name>
+		<servlet-class>marcsEisdiele.server.UnternehmensServiceImpl</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>UnternehmensService</servlet-name>
+		<url-pattern>/marcseisdiele/UnternehmensService</url-pattern>
+	</servlet-mapping>
 
 </web-app>

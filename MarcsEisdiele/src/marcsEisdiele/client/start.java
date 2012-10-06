@@ -1,5 +1,6 @@
 package marcsEisdiele.client;
 
+import marcsEisdiele.server.PersistenceManager;
 import marcsEisdiele.shared.Unternehmen;
 
 import com.gargoylesoftware.htmlunit.javascript.host.Text;
@@ -14,6 +15,7 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasText;
@@ -28,6 +30,8 @@ import com.sencha.gxt.widget.core.client.menu.Menu;
 import com.sencha.gxt.widget.core.client.menu.MenuBar;
 import com.sencha.gxt.widget.core.client.menu.MenuBarItem;
 import com.sencha.gxt.widget.core.client.menu.MenuItem;
+
+
 
 
 public class start extends Composite implements EntryPoint, HasText {
@@ -48,7 +52,7 @@ public class start extends Composite implements EntryPoint, HasText {
 	int quality;
 	int kapital;
 	int capaticity;
-	
+	private UnternehmensServiceAsync service;
 
 	@UiField TextBox tNameUN;
 	@UiField TextBox currentPersonal;
@@ -68,9 +72,13 @@ public class start extends Composite implements EntryPoint, HasText {
 
 	@UiHandler("bWeiter")
 	void onClickWeiter(ClickEvent e) {
-		String name = tNameUN.getText();
-		Window.alert("Variablen" + name + personal);
-		eigenesUN = new Unternehmen(tNameUN.getText(), personal, kapital, quality, capaticity);
+//		String name = tNameUN.getText();
+//		Window.alert("Variablen" + name + personal);
+//		eigenesUN = new Unternehmen(tNameUN.getText(), personal, kapital, quality, capaticity);
+		
+		//Beispielhafte implementierung der Datenbank. der eingetragenen Name wird einfach gespeichert
+		Unternehmen u = new Unternehmen(tNameUN.getText());
+		service.addUnternehmen(u, new AddUnternehmenCallback());
 
 	}
 
@@ -85,6 +93,8 @@ public class start extends Composite implements EntryPoint, HasText {
 	@Override
 	public void onModuleLoad() {
 		
+		//Instanziieren des Services
+		service = GWT.create(UnternehmensService.class);
 		
 		//MENUBAR
 		
@@ -172,7 +182,6 @@ public class start extends Composite implements EntryPoint, HasText {
 						
 			bWeiter.setText("weiter");
 //			currentPersonal.setText("100");
-			
 			panel.add(this, new TabItemConfig("Unternehmen definieren"));
 	    	}
 	    }
@@ -196,6 +205,19 @@ public class start extends Composite implements EntryPoint, HasText {
 	    RootPanel.get().add(panel);
 		
 	}
+	//Callbacks für die Async Services
+	public class AddUnternehmenCallback implements AsyncCallback<java.lang.Void> {
+
+        @Override
+        public void onFailure(Throwable caught) {
+        	System.out.println("fail");
+        }
+
+        @Override
+        public void onSuccess(Void result) {
+        	System.out.println("success");
+        }
+    }
 
 	
 }

@@ -9,5 +9,7 @@
 	<classpathentry kind="lib" path="C:/eclipse/workspace/UnternehmensPlanspiel/MarcsEisdiele/war/WEB-INF/lib/mongo-2.8.0.jar"/>
 	<classpathentry kind="lib" path="C:/eclipse/workspace/UnternehmensPlanspiel/MarcsEisdiele/war/WEB-INF/lib/morphia-0.99.jar"/>
 	<classpathentry kind="lib" path="C:/eclipse/workspace/UnternehmensPlanspiel/MarcsEisdiele/war/WEB-INF/lib/morphia-gwt-0.99-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="C:/eclipse/workspace/UnternehmensPlanspiel/MarcsEisdiele/war/WEB-INF/lib/gwt-dev.jar"/>
+	<classpathentry kind="lib" path="C:/eclipse/workspace/UnternehmensPlanspiel/MarcsEisdiele/war/WEB-INF/lib/gwt-user.jar"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>

@@ -1,11 +1,22 @@
 package marcsEisdiele.shared;
 
+import java.io.Serializable;
+
 import com.google.gwt.user.client.Window;
 
-public class Unternehmen {
+public class Unternehmen implements Serializable {
 	
+	private static final long serialVersionUID = -5374561203702292915L;
 	private String NameUN;
 	private int personal, kapital, qualitaet, kapazitaet;
+	
+	public Unternehmen() {
+	}
+	
+	//Konstruktor um eine einfach Datenbankabfrage zu testen. kann später gelösch werden!!
+	public Unternehmen(String name){
+		NameUN= name;
+	}
 
 	public Unternehmen(String NameUN, int personal, int kapital, int qualitaet, int kapazitaet) {
 		NameUN=this.getNameUN();
